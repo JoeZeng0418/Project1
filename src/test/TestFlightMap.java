@@ -7,8 +7,9 @@ public class TestFlightMap {
 		flightMap = new FlightMap();
 	}
 	@Test
-	public void testToString() {
-		flightMap = new FlightMap();
-		assertEquals(flightMap.toString(), "test");
+	public void testRouteConstructor() {
+		FlightMap.Route testRoute = new FlightMap.Route("C", 100);
+		assertEquals(testRoute.destCity, "C");
+		assertEquals(testRoute.cost, 100);
 	}
 }

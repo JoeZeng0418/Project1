@@ -28,7 +28,7 @@ public class FlightMap{
 	}
 	/**
 	* Constructor with param
-	* @param Map<String,List<Route>> a map of all cities
+	* @param allCities A map of all cities
 	*/
 	public FlightMap(Map<String, Set<Route>> allCities){
 		this.allCities = allCities;
@@ -42,6 +42,7 @@ public class FlightMap{
 	}
 	/**
 	* Setter function
+	* @param allCities A map of all cities
 	*/
 	public void setAllCities(Map<String, Set<Route>> allCities){
 		this.allCities = allCities;
@@ -66,10 +67,7 @@ public class FlightMap{
 		routes.add(new Route(destCity, cost));
 	}
 	/**
-	* Add a city and its routes
-	* @param city the name of the city
-	* @param destCity the name of the destination city
-	* @param cost the cost from city to destCity
+	* Override toString() function
 	*/
 	@Override
 	public String toString(){
