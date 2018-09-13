@@ -8,13 +8,33 @@ public class FlightMap{
 	/** 
 	* A Route instance includes a destination city and the the cost to the city
 	*/
-	public static class Route{
+	public static class Route implements Comparable<Route>{
 		public String destCity;
 		public int cost;
+
+		/** 
+		* A Route constructor
+		* @param destCity the destination city of the route
+		* @param cost the cost to the city
+		*/
 		Route(String destCity, int cost){
 			this.destCity = destCity;
 			this.cost = cost;
 		}
+		/** 
+		* Override compareTo function in Comparable Object
+		* @param other another Route instance
+		* @return the value to determine the comparison of two Route instance
+		*/
+		@Override
+	    public int compareTo(Route other){
+	    	return this.destCity.compareTo(other.destCity);
+	    }
+		@Override
+		public String toString() {
+			return "Route [destCity=" + destCity + ", cost=" + cost + "]";
+		}
+		
 	}
 	/** 
 	* Map from a city(name) to all of its routes
@@ -53,7 +73,7 @@ public class FlightMap{
 	* @param destCity the name of the destination city
 	* @param cost the cost from city to destCity
 	*/
-	public void addCity(String city, String destCity, int cost){
+	public void addRoute(String city, String destCity, int cost){
 		if(!allCities.containsKey(city)){
 			allCities.put(city, new TreeSet<Route>());
 		}
@@ -69,9 +89,20 @@ public class FlightMap{
 	/**
 	* Override toString() function
 	*/
+//	@Override
+//	public String toString(){
+//		String str = "{ cities:\n";
+//		for (Map.Entry entry: allCities) {
+//			str = str+"[ "+entry.getKey()+": ";
+//			for (Route route : entry.getValue()) {
+//				str = str+
+//			}
+//			str = str+"]"
+//		}
+//	}
 	@Override
-	public String toString(){
-		return "test";
+	public String toString() {
+		return "FlightMap [allCities=" + allCities + "]";
 	}
 
 

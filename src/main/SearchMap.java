@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.*;
 public class SearchMap{
 	/*
 	* main function
@@ -22,7 +23,19 @@ public class SearchMap{
 			br = new BufferedReader(fr);
 			String line = br.readLine();
 			System.out.println(line);
-			FlightMap a = new FlightMap();
+
+
+			Map<String, Set<FlightMap.Route>> testMap = new HashMap<>();
+			FlightMap.Route testRoute1 = new FlightMap.Route("A", 100);
+			FlightMap.Route testRoute2 = new FlightMap.Route("B", 200);
+			Set<FlightMap.Route> routes = new TreeSet<>();
+			routes.add(testRoute1);
+			routes.add(testRoute2);
+			testMap.put("J",routes);
+			FlightMap a = new FlightMap(testMap);
+			a.addRoute("J","C",300);
+			a.addRoute("O","J",200);
+			System.out.println(a);
 		} catch(FileNotFoundException e) {
 			System.out.println(e.getMessage());
 		} catch(IOException e){
